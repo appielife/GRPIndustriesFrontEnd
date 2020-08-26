@@ -1,0 +1,34 @@
+<div class="closedOverlay"></div>
+<div class="sidebar_menu border-normal">
+    <section class="user-info-header padding-40px-tb box-shadow mob-box-shadow bank-user-dashboard cover-background tab-hide">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-12 row m-0">
+                    <div class="avtar-content">
+                        <h3 class="text-light-blue mb-lg-1">Welcome {{userDetails?.firstName}}</h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 mb-text-left">
+                    <div class="mobile-view account-del">
+                        <!-- <p class="mb-1">Account Number : 100000{{userDetails?.fk_user_id}}</p>
+                        <p class="mb-0">Account Type : Saving Account</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <ul class="default-reset normal-list list-20 p-4 mobile-SidePanel">
+        <li class="mt-0">
+            <a routerLinkActive="active-link" routerLink="../dashboard">Account Details</a>
+        </li>
+        <li>
+            <a routerLink="../fund" routerLinkActive="active-link">Send Ether (ETH)</a>
+        </li>
+        <li>
+            <a routerLink="../summary" routerLinkActive="active-link">Transaction History</a>
+        </li>
+        <li>
+            <a class="cursor-pointer" (click)=GotoLogin()>Sign out</a>
+        </li>
+    </ul>
+</div>

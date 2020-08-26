@@ -1,0 +1,91 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-9">
+        <div class="dasboard-main-content-wrapper border-normal p-4">
+          <h2 class="text-light-blue mb-20">Transaction History</h2>
+          <div class="sorting-box row">
+            <div class="col-sm-4 mt-2">
+              <div class="filter-radio-btn">
+                <label class="radio-inline">
+                  <input type="radio" (change)="sentTransaction(null)" name="optradio" checked="checked">
+                  <span>Sent</span>
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" (change)="receivedTransaction(null)" name="optradio">
+                  <span>Received</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-4 text-right">
+              <label for="" class="mb-0 mt-2">
+                <i class="ti-filter text-small"></i> Filter </label>
+            </div>
+            <div class="col-sm-4 text-right">
+              <div class="select select_wrapeer" tabindex="1">
+                <select (change)="statusValue($event.target)" class="selectpicker">
+                  <option selected="selected" value=''>All</option>
+                  <option value=0>Failed</option>
+                  <option value=1>Completed</option>
+                  <option value=2>Pending</option>
+                  <option value=3>Unclaimed</option>
+                  <option value=4>Revoked</option>
+
+                </select>
+              </div>
+            </div>
+          </div>
+          <table class="table theme-table sort-table mt-20">
+            <thead class="bg-blue">
+              <tr>
+                <th>
+                  <span *ngIf="sendTran">To</span>
+                  <span *ngIf="recTran">From</span>
+                </th>
+                <th>Amount (ETH)</th>
+                <th>Amount (USD)</th>
+                <th>Transaction cost (ETH)</th>
+                <!-- <th>Transaction hash</th> -->
+                <th>Status</th>
+                <th>Date And Time</th>
+                <th>Advance option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="!userRecords || userRecords.length == 0">
+                No Records Found
+              </tr>
+              <tr *ngFor="let item of userRecords;let i = index">
+                <td data-label="To" *ngIf='item.txn_status && sendTran'>{{item?.toEmail}}</td>
+                <td data-label="From" *ngIf='item.txn_status && recTran'>{{item?.fromEmail}}</td>
+                <td data-label="Amount (ETH)" *ngIf='item.txn_status'>{{item?.amount}} </td>
+                <td data-label="Amount (USD)" *ngIf='item.txn_status'>{{item?.current_eth_price * item?.amount}}</td>
+                <td data-label="Transaction Cost (ETH)" *ngIf='item.txn_status'>{{(item?.gas_price*item?.gas_limit)/1000000000000000000}}</td>
+                <!--  <td></td>-->
+                <td data-label="Status" *ngIf='item.txn_status'>
+                  <button *ngIf='item.txn_status==0' class="btn-status faild cursor-pointer mb-10">Failed</button>
+                  <button *ngIf='item.txn_status==1' class="btn-status approve cursor-pointer mb-10">Completed</button>
+                  <button *ngIf='item.txn_status==2' class="btn-status pending cursor-pointer mb-10">Pending</button>
+                  <button *ngIf='item.txn_status==3' class="btn-status pending cursor-pointer mb-10">Unclaimed</button>
+                  <button *ngIf='item.txn_status==4' class="btn-status faild cursor-pointer mb-10">Revoked</button>
+
+                </td>
+                <td data-label="Date And Time" *ngIf='item.txn_status'>{{item?.created_date | date}} {{item?.created_date | date:'shortTime'}}</td>
+                <td data-label="Advance option" *ngIf="item.txnAdd" (click)="details(item)" align="center" class="cursor-pointer" data-toggle="modal"
+                  data-target="#myModal">
+                  <i class="ti-eye"></i>
+                </td>
+                <td *ngIf="!item.txnAdd" align="center" data-label="Advance option">NA</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

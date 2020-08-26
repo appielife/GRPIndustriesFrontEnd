@@ -1,0 +1,161 @@
+<app-dashboard-header></app-dashboard-header>
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="crypto-wallet border-normal p-4 mb-padding-10">
+          <div class="row">
+            <div class="col-sm-8">
+              <h3 class="text-light-blue mb-20"> Send Ether (ETH)</h3>
+              <form [formGroup]="formSaveTranDetail" novalidate (ngSubmit)="saveTranDetail(formSaveTranDetail.value)">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="walletAddress">From</label>
+                      <input type="text" name="" id="walletAddress" formControlName="walletAddress" class="form-control input-label" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="availableBalance">Available Balance</label>
+                      <input type="text" name="" id="availableBalance" formControlName="availableBalance" class="form-control input-label" readonly>
+                    </div>
+                    <div class="current-rate">
+                      <p class="mb-0 text-turquoise-green">
+                        <i>(Value in USD)
+                          <span *ngIf='!ethRate'>
+                            <i class="fa fa-spinner fa-spin" style="font-size:11px"></i>
+                          </span>
+                        </i>
+                      </p>
+                      <span class="text-yellowish-gray">{{ethRate_avlbl}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="email">Enter email </label>
+                      <input type="text" name="" formControlName="email" id="email" placeholder="Enter email" class="form-control">
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['email'].hasError('required') && formSaveTranDetail.controls['email'].touched">
+                        Please enter Email ID
+                      </small>
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['email'].hasError('emailValid') && formSaveTranDetail.controls['email'].touched">
+                        Please enter correct Email ID
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <div class="form-group">
+                      <label for="amount">Enter amount (ETH)</label>
+                      <!-- <span class="padding-left-10px text-11 text-turquoise-green">1 ETH = {{ethRate}} USD</span> -->
+                      <input (keyup)="amountEmpty_eth($event)" type="text" name="" formControlName="amount" id="amount" placeholder="Enter amount"
+                        class="form-control">
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['amount'].hasError('required') && formSaveTranDetail.controls['amount'].touched">
+                        Please enter Amount
+                      </small>
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['amount'].hasError('amountValid') && formSaveTranDetail.controls['amount'].touched">
+                        Please enter correct Amount
+                      </small>
+                      <small class="error text-danger" *ngIf="errorMsg">
+                        Amount should not be 0
+                      </small>
+                      <!-- <div class="current-rate">
+                        <p class="mb-0 text-turquoise-green">
+                          <i>(Value in USD)
+                            <span *ngIf='!ethRate'>
+                              <i class="fa fa-spinner fa-spin" style="font-size:11px"></i>
+                            </span>
+                          </i>
+                        </p>
+                        <span class="text-yellowish-gray">{{ethRate*ethToUSD}}</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-sm-2 align-self-center text-center">
+
+                    <!-- <i class="fa fa-exchange-alt"  data-fa-transform="rotate-90"style="font-size:24px"></i> -->
+                    <i class="fa fa-exchange-alt exchange_icon" style="font-size:24px"></i>
+
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="form-group">
+                      <label for="amount_usd">Enter amount (USD)</label>
+                      <!-- <span class="padding-left-10px text-11 text-turquoise-green">1 ETH = {{ethRate}} USD</span> -->
+                      <input (keyup)="amountEmpty_usd($event)" type="text" name="" formControlName="amount_usd" id="amount_usd" placeholder="Enter amount"
+                        class="form-control">
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['amount_usd'].hasError('required') && formSaveTranDetail.controls['amount_usd'].touched">
+                        Please enter Amount
+                      </small>
+                      <small class="error text-danger" *ngIf="formSaveTranDetail.controls['amount_usd'].hasError('amountValid') && formSaveTranDetail.controls['amount_usd'].touched">
+                        Please enter correct Amount
+                      </small>
+                      <small class="error text-danger" *ngIf="errorMsg">
+                        Amount should not be 0
+                      </small>
+                      <!-- <div class="current-rate">
+                          <p class="mb-0 text-turquoise-green">
+                            <i>(Value in USD)
+                              <span *ngIf='!ethRate'>
+                                <i class="fa fa-spinner fa-spin" style="font-size:11px"></i>
+                              </span>
+                            </i>
+                          </p>
+                          <span class="text-yellowish-gray">{{ethRate*ethToUSD}}</span>
+                        </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div style="display:none" class="row mt-10">
+                  <div class="col-sm-12">
+                    <div class="card-header">
+                      <h5 class="cursor-pointer card-header-caption fa-1x mb-0 p-1">
+                        <span class="ti-plus"></span> Advance option
+                      </h5>
+                      <div class="card_content">
+                        <div class="row ml-0 mr-0">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <label for="price">Gas price (WEI)</label>
+                              <input type="text" formControlName="gasPrice" class="form-control" id="price" placeholder="Enter gas price">
+                              <small class="error text-danger" *ngIf="formSaveTranDetail.controls['gasPrice'].hasError('amountValid') && formSaveTranDetail.controls['gasPrice'].touched">
+                                Please enter correct gas price
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row ml-0 mr-0">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <label for="limit">Gas limit</label>
+                              <input type="text" formControlName="gasLimit" class="form-control" id="limit" placeholder="Enter gas limit">
+                              <small class="error text-danger" *ngIf="formSaveTranDetail.controls['gasLimit'].hasError('amountValid') && formSaveTranDetail.controls['gasLimit'].touched">
+                                Please enter correct gas limit
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button data-toggle="modal" class="btn width-30 mt-3 text-white btn-primary">Send ETH</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

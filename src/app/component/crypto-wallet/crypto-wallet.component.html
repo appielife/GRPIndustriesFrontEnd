@@ -1,0 +1,56 @@
+<app-dashboard-header></app-dashboard-header>
+<section class="mani-dashboard-content padding-70px-tb">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="crypto-wallet border-normal p-4">
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="text-light-blue mb-20"> User public key</h3>
+              <div class="wallet_adress-wrapper row">
+                <div class="col-sm-9">
+                  <input type="text" readonly [(ngModel)]="userDetails.wallet_address" class="form-control border-radius-30 min-h-50" id="copy_inp">
+                </div>
+                <div class="col-sm-3">
+                  <button (click)="copyCode()" class="btn btn-primary width-100">Copy address</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="separator">
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="mb-20">Your Crypto Account:</h3>
+              <table class="table theme-table">
+                <thead class="bg-blue">
+                  <tr>
+                    <th scope="col">Wallet Address</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">CCY</th>
+                    <th scope="col">Available Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf='userDetails'>
+                    <td data-label="Wallet Address">{{userDetails.wallet_address}}</td>
+                    <td data-label="Description">Crypto</td>
+                    <td data-label="CCY">ETH</td>
+                    <td data-label="Available Balanc">{{balance}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button routerLink="../fund" class="btn btn-primary width-20 mt-20">Send ETH</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

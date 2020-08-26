@@ -1,0 +1,117 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+   <div class="container">
+   <div class="row padding-three-bottom">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-12 col-md-9 col-lg-9">
+         <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+            <div class="col-sm-8">
+               <h4 class="text-light-blue mb-20">Result </h4>
+               <div class="row">
+                  <div class="col-4">
+                     <span class="">Total CC</span>
+                  </div>
+                  <div class="col-8">
+                     <span class=""> {{totalcc}}</span>
+                  </div>
+               </div>
+               <table class="table theme-table sort-table mt-20">
+                  <thead class="bg-blue">
+                     <tr>
+                        <th>ID</th>
+                        <th>Thickness</th>
+                        <th>Length</th>
+                        <th>Width</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody >
+                     <tr *ngIf="dataArray.length == 0">
+                        No Records Found
+                     </tr>
+                       <tr *ngFor="let data of dataArray">
+                            <td>{{data.id}}</td>
+                            <td>{{data.thicknessName}}</td>
+                            <td>{{data.lengthName}}</td>
+                            <td>{{data.widthName}}</td>
+                            <td><input type="text" id="{{data.id}}" class="quick-form"  [value] ="data.quantity" > </td>
+                            <td><input type="text" id="{{data.id}}" class="quick-form"  [value] ="data.price" > </td>
+                            <td>{{data.price}}</td>   
+                       </tr>
+          
+                     
+                     <!-- <tr *ngFor="dataArray.length != 0">
+                        </tr> -->
+                  </tbody>
+               </table>
+
+               <!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <a class="text-success" (click)="add()">
+          <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+        </a>
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">ID Name</th>
+          <th class="text-center">Thickness</th>
+          <th class="text-center">Length Name</th>
+          <th class="text-center">Width</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Action</th>              
+        </tr>
+        <tr *ngFor="let data of dataArray; let id = index">      
+          <td>
+            <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{data.id}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{data.lengthName}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{data.widthName}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{data.quantity}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{data.price}}</span>
+          </td>
+          <td>
+            <span class="table-up">
+              <a class="indigo-text">
+                <mdb-icon fas icon="long-arrow-alt-up"></mdb-icon>
+              </a>
+            </span>
+            <span class="table-down">
+              <a class="indigo-text">
+                <mdb-icon fas icon="long-arrow-alt-down"></mdb-icon>
+              </a>
+            </span>
+          </td>
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+</section>

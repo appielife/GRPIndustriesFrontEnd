@@ -1,0 +1,102 @@
+<div class="login_screen h-100vh login-BG">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 offset-md-3 offset-lg-3">
+                <div class="login-wrapper bg-white margin-nineteen-top border-radius-3">
+                    <!--login box header part-->
+                    <div class="login-box-header pos-relative padding-50px-tb cover-background text-center z-index-0 Sm-30px-tb">
+                        <div class="overlay-header"></div>
+                        <h1 class="text-white">
+                        
+                            <!-- <img class="brand_logo" src="assets/img/ak_logo.png" alt=""> -->
+                            <img class="small_logo" src="" alt="" src="assets/img/logo.png">
+                        </h1>
+                    </div>
+                    <!-- end-->
+                    <div class="form-main-Content p-5 box-shadow Sm-p-2">
+                        <p>
+                            <span class="text-cinnabar font-weight-600">Note:</span> Keep your UserName and PIN / Password secret for a safer Net Banking experience.
+                        </p>
+                        <form [formGroup]="formRegister" novalidate (ngSubmit)="register(formRegister.value)" class="form-signin form-horizontal">
+                            <div class="form-group mb-0 mt-30 row">
+                                <div class="col-sm-4 mt-10">
+                                    <label class="control-label" for="firstName">
+                                        <i class="fas fa-user text-dark-gray"></i> First Name</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input autocomplete="false" type="text" id="firstName" formControlName="firstName" placeholder="Enter First name" class="form-border">
+                                    <small class="error text-danger" *ngIf="formRegister.controls['firstName'].hasError('required') && formRegister.controls['firstName'].touched">
+                                        Please enter First Name
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-30 row">
+                                <div class="col-sm-4 mt-10">
+                                    <label class="control-label" for="lastName">
+                                        <i class="fas fa-user text-dark-gray"></i> Last Name</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input autocomplete="false" type="text" id="lastName" formControlName="lastName" placeholder="Enter Last name" class="form-border">
+                                    <small class="error text-danger" *ngIf="formRegister.controls['lastName'].hasError('required') && formRegister.controls['lastName'].touched">
+                                        Please enter Last Name
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-30 row">
+                                <div class="col-sm-4  mt-10">
+                                    <label class="control-label" for="email">
+                                        <i class="fas fa-envelope text-dark-gray"></i> E-mail</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input autocomplete="false" type="text" id="email" formControlName="email" placeholder="Enter email" class="form-border"
+                                        readonly>
+                                    <small class="error text-danger" *ngIf="formRegister.controls['email'].hasError('required') && formRegister.controls['email'].touched">
+                                        Please enter Email ID
+                                    </small>
+                                    <small class="error text-danger" *ngIf="formRegister.controls['email'].hasError('emailValid') && formRegister.controls['email'].touched">
+                                        Please enter correct Email ID
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-30 row">
+                                <div class="col-sm-4 mt-10">
+                                    <label class="control-label" for="password">
+                                        <i class="fas fa-key text-dark-gray"></i> Password</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="password" autocomplete="false" id="password" formControlName="password" placeholder="Enter password" class="form-border">
+                                    <small class="error text-danger" *ngIf="formRegister.controls['password'].hasError('required') && formRegister.controls['password'].touched">
+                                        Please enter Password
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-30 row">
+                                <div class="col-sm-4 mt-10">
+                                    <label class="control-label" for="password_confirm">
+                                        <i class="fas fa-key text-dark-gray"></i> Confirm password</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="password" autocomplete="false" id="password_confirm" formControlName="password_confirm" placeholder="Confirm password"
+                                        class="form-border">
+                                    <small class="error text-danger" *ngIf="formRegister.controls['password'].hasError('required') && formRegister.controls['password'].touched">
+                                        Please enter Password
+                                    </small>
+                                    <small class="error text-danger" *ngIf="formRegister.hasError('matchingPasswords') && formRegister.controls['password_confirm'].touched">
+                                        Password should be same
+                                    </small>
+                                </div>
+                            </div>
+                            <!-- Button -->
+                            <div class="text-center mt-30">
+                                <button class="btn btn-primary width-40 text-transform">Register</button>
+                            </div>
+                        </form>
+                        <small class="error text-danger" *ngIf="error">
+                            {{error}}
+                        </small>
+                        <!-- /form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,249 @@
+<app-dashboard-header></app-dashboard-header>
+
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+    <div class="container">
+            <!-- <div class=" fixedHeader">
+                  
+                </div> -->
+
+        <div class ="row padding-three-bottom">
+                <div class="col-sm-3">
+                        <app-sidebar></app-sidebar>
+                    </div>
+
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                            <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+                            <div class="col-sm-8">
+
+                             <h4 class="text-light-blue mb-20">Billing Information</h4> 
+                                <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                             <label for="">Party Name </label>
+                                                    <select [(ngModel)]=party_uid class="form-control" id="party_uid">
+                                                            <option *ngFor="let items of clientDetails" [value]="items.id">{{items.company_name}}</option>
+                                                    </select>                                                                      
+                                            </div>
+            
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="">Item</label>    
+                                                <input [(ngModel)]=item_name class="form-control" id="itemName"/>   
+                                                
+                                            </div>
+            
+                                        </div>
+                                </div> 
+
+                                <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="">Date</label>
+                                                <input [(ngModel)]="order_date" type='date' class="form-control" id="date" />
+                                                                     
+                                            </div>
+            
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for=""> Vehicle No.</label>    
+                                                <input  [(ngModel)]="vehicle_info" class="form-control" id="vehicleNo"/>   
+                                                 
+                                            </div>
+            
+                                        </div>
+                                </div> 
+                             
+                             
+                            </div>
+                            </div>
+
+
+                    </div>
+
+
+            
+        </div>       
+
+        <div class="row padding-three-bottom">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+                    
+                    <div class="col-sm-8">
+
+                                <h4 class="text-light-blue mb-20">Quantity calculator</h4>                             
+                         
+               
+            <!-- Enter thickness -->
+                            <div *ngFor='let dataArrayObj of dataArray ; index as i;' style="border-bottom: solid 2px #eee; border-top: solid 2px #eee; padding-top: 20px;">
+                                <div class="row padding-three-bottom">
+
+                                        <div class="col-8 text-left">
+                                            
+                                             
+                                                <div class="row">
+                                                        <div class="col-8">
+                                                                <h4 class="text-light-blue mb-20">Lot {{i+1}}</h4>
+                                                           </div>
+                                                           <div class="col-4">  
+                                                                <div class="row text-center">
+                                                                    <span class="text-medium font-weight-bold"> {{dataArray[i].sum}}</span>
+                                                                 </div>  
+                                                                <div class="row text-center">                                                                       
+                                                                        <span class="text-small">Total CC</span>                                                                     
+                                                              </div> 
+                                                                                                        
+                        
+                                                            </div>                                           
+                   
+                                                  </div>  
+                                                  
+                                            
+                                            
+                                            </div>
+                                        <div class="col-4 text-right">
+                                                <img *ngIf='i!=0' (click)='onDeletePress(i)'  width="20px" src="../../../assets/img/delete-icon.png">
+                                            </div>
+                                     </div>
+                                     
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">Thickness </label>
+                                    <select  [(ngModel)]=dataArrayObj.desired_thickness class="form-control" id="thickness">
+                                        <option *ngFor="let thicknessObject of thickness_category" [ngValue]=thicknessObject>{{thicknessObject.name}}</option>
+                                        <option value="" disabled selected>inches</option>
+                                      </select>                               
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for=""> Length</label>
+
+                                    <select [(ngModel)]="dataArrayObj.desired_length" class="form-control" id="length">
+                                        <option value="" disabled selected>inches</option>
+                                        <option *ngFor="let lengthObject of length_category" [ngValue]=lengthObject>{{lengthObject.name}}</option>
+                                      </select>
+                                     
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row" *ngFor='let widthItem of dataArrayObj.desired_width ; index as y'> 
+                          <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">{{widthItem.name}} </label>                                 
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="align-items: center;justify-content: center;"class="form-group row ">
+                                    <div (click)='onSubtractPress(i, y)'class="col-3">
+                                    <img width="25px"src="../../../assets/img/minus-icon.png">
+                                   </div>
+                                   <div class="col-6">
+                                        <input type="text" [(ngModel)]=widthItem.qty class="form-control" placeholder="Qty.">
+                                    </div>
+
+                                    <div (click)='onAddPress(i, y)' class="col-3">
+                                            <img   width="25px" src="../../../assets/img/plus-icon.png">
+                                    </div>                                    
+                                </div>
+
+                            </div>
+                        </div>
+                         
+                                   
+                         </div>
+
+
+
+                       
+
+
+<!-- space to enter amount of thickness -->
+                          
+
+
+
+                         
+                            <!-- <div class="row" *ngIf="auth_err">
+                                <div class="col-sm-6">
+                                    <small class="error text-danger" style="margin-bottom: 10px;">
+                                        Incorrect verification code!
+                                    </small>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-6 text-left">
+                                    <button type="submit" (click)='onAddLot()' class="btn btn-secondary mt-10 width-50">  <img width="25px"src="../../../assets/img/plus-icon.png">
+                                        Add more</button>
+                                </div>
+                                <div class="col-6 text-left">
+                                        <button (click)='onSubmit()'type="submit" class="btn btn-primary mt-10 width-50">Confirm</button>
+                                    </div>
+                                  
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row padding-three-bottom">
+                <div class="col-sm-3">
+                    </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+                        
+                        <div class="col-sm-8">
+    
+                                    <h4 class="text-light-blue mb-20">Result </h4> 
+                                    <div class="row">
+                                     <div class="col-4">
+                                         <span class="">Total CC</span>
+                                        </div>
+                                        <div class="col-8">
+                                                <span class=""> {{totalcc}}</span>
+                                         </div>                                           
+
+                                    </div>                       
+                         
+                                    <table class="table theme-table sort-table mt-20">
+                                            <thead class="bg-blue">
+                                              <tr>
+                                                <th> {{totalcc}}</th>
+                                                <th>Thickness</th>
+                                                <th>Length</th>
+                                                <th>Width</th>
+                                                <th>Cubic feet</th>
+                                                <th>Price</th>
+                                                <th>Total Amount</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngIf="dataArray.length == 0">
+                                                No Records Found
+                                              </tr>
+                                              <!-- <tr *ngFor="dataArray.length != 0">
+                                                
+                                              </tr> -->
+                                            </tbody>
+                                          </table>
+                  
+                              
+    
+    
+    
+                      
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+

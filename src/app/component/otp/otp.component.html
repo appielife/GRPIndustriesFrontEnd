@@ -1,0 +1,143 @@
+<app-dashboard-header></app-dashboard-header>
+<!-- 
+<section class="otp_wrapper padding-70px-tb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 offset-lg-2 offset-md-2 box-shadow p-5 border-radius-4">
+                <img class="display-block ml-auto mr-auto mb-20 width-150" src="assets/img/email.svg" alt="">
+                <p class="text-light-blue list-size-18 text-center mb-30">An otp has been sent to
+                    <a class="text-light-gray2" href="">{{user.email}}</a> Please enter it here along with your password in order to verify your transacation.</p>
+                <form [formGroup]="formPayment" novalidate (ngSubmit)="payment(formPayment.value)">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group margin-bottom-10px">
+                                <label for="">Enter OTP</label>
+                                <input type="text" formControlName="otp" class="form-control" placeholder="Enter OTP">
+                                <small class="error text-danger" *ngIf="formPayment.controls['otp'].hasError('required') && formPayment.controls['otp'].touched">
+                                    Please enter OTP
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group margin-bottom-10px">
+                                <label for="">Enter password</label>
+                                <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
+                                <small class="error text-danger" *ngIf="formPayment.controls['password'].hasError('required') && formPayment.controls['password'].touched">
+                                    Please enter Password
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="resend-timer" id="ms_timer"></div>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <label class="cursor-pointer resend-label" (click)="startTimer()">Resend Otp ?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" [disabled]="!formPayment.valid" class="btn btn-primary mt-20 width-25">Complete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+                    <div class="col-sm-8">
+                        <h3 class="text-light-blue mb-20">Verify Transaction</h3>
+                        <!-- <p class="text-light-blue text-small-14 mb-20">An otp has been sent to
+                            <span class="text-light-gray2">{{user.email}}</span>
+                        </p> -->
+                        <form [formGroup]="formPayment" novalidate (ngSubmit)="payment(formPayment.value)">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="walletAddress">Receiver Address</label>
+                                        <input class="form-control input-label" name="" formControlName="receiverAddress" readonly="" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="walletAddress">Amount</label>
+                                        <input class="form-control input-label" name="" readonly="" type="text" formControlName="amount">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Enter password</label>
+                                        <input type="password" formControlName="password" class="form-control" placeholder="Enter password">
+                                        <small class="error text-danger" *ngIf="formPayment.controls['password'].hasError('required') && formPayment.controls['password'].touched">
+                                            Please enter password
+                                        </small>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Enter the verification code sent to your email</label>
+                                        <input type="text" formControlName="otp" class="form-control" placeholder="Enter verification code">
+                                        <small class="error text-danger" *ngIf="formPayment.controls['otp'].hasError('required') && formPayment.controls['otp'].touched">
+                                            Please enter verification code
+                                        </small>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <p class="text-light-gray2 text-small-14" style="margin-bottom: 0px">A verification code has been sent to
+                                                <span class="text-light-blue">{{user.email}}</span>
+                                            </p>
+                                            <span class="text-light-gray2 text-small-14 mb-102">Didn't recieve verification code? </span> 
+                                            <label class="cursor-pointer resend-label" (click)="startTimer()">Resend </label>
+                                            <label class="cursor-pointer resend-label" *ngIf="isOtpResentLoader">
+                                                <I class="faa-spin animated"></I>
+                                            </label>
+                                            <label class="cursor-pointer resend-label" *ngIf="isOtpResent" style="color: #00b741;"> Verification code successfully resent </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="auth_err">
+                                <div class="col-sm-6">
+                                    <small class="error text-danger" style="margin-bottom: 10px;">
+                                        Incorrect verification code!
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 text-left">
+                                    <button type="submit" [disabled]="!formPayment.valid" class="btn btn-primary mt-10 width-30">Confirm</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

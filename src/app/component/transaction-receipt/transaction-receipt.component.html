@@ -1,0 +1,55 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-9">
+        <div class="dasboard-main-content-wrapper border-normal p-4">
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class="text-light-blue mb-20">Transaction summary</h3>
+              <div *ngIf="transactionResult?.status == 1">
+                <!-- <div class="sent-wrapper text-center padding-40px-tb">
+                <img class="wd-100" src="assets/img/sent.jpg" alt="">
+                <h3 class="mb-20 mt-10">Transaction successful</h3>
+              </div> -->
+                <table class="table theme-table">
+                  <thead class="bg-blue">
+                    <tr>
+                      <th>Transaction id</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Transaction id">1000000{{transactionResult?.success.id}}</td>
+                      <td data-label="From">{{transactionResult?.success.from}}</td>
+                      <td data-label="To">{{transactionResult?.success.toEmail}}</td>
+                      <td data-label="Amount">{{transactionResult?.success.amount}} ETH</td>
+                      <td data-label="Status" class="text-light-blue">Transaction initiated</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <div *ngIf="transactionResult?.status == 0">
+                <div class="sent-wrapper text-center padding-40px-tb">
+                  <img class="wd-100" src="assets/img/error.png" alt="">
+                  <h3 class="mb-20 mt-10">Transaction failed</h3>
+                  <p>Your request could not be processed.</p>
+                  <p>Reason: {{transactionResult?.error}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

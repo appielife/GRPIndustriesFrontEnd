@@ -1,0 +1,307 @@
+<!--banner section-->
+<section class="banner bannerBg pos-relative z-index-1">
+  <div class="banner-ovearly"></div>
+  <div class="container">
+    <div class="row padding-150px-tb mob-pd-tb">
+      <div class="col-lg-10 col-md-10 offset-md-1 offset-lg-1 text-center">
+        <h1 class="text-white f-47 main-bannerText">TRANSFER YOUR CRYPTO CURRENCY TO EMAIL ADDRESS</h1>
+        <p class="mt-20 text-white tab-hidden">Afrikash help you to transfer cryptocurrency directly using email address. It provide you with a hassle free approach
+          to transfer cryptofunds from your wallet to another by using email id.</p>
+        <button class="btn btn-icon-support pos-relative width-20 p-3 border-radius-30 bg-white mt-20 cursor-pointer">
+          <span *ngIf='isLoggedIn' class="value-conten" routerLink="dashboard">Make transfer</span>
+          <span *ngIf='!isLoggedIn' class="value-conten" routerLink="login">Make transfer</span>
+          <span class="value-icon">
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </span>
+        </button>
+      </div>
+      <!-- <div class="col-md-3 col-lg-3 offset-md-1 offset-lg-1">
+        <div class="quick-form-box">
+          <div class="bg-blue p-1 quick-login-header text-center">
+            <h5 class="text-white">Quick Login</h5>
+          </div>
+          <div class="bg-white p-3 quick-form-inner padding-top-35px padding-bottom-35px">
+            <form [formGroup]="formLogin" novalidate (ngSubmit)="login(formLogin.value)">
+              <div class="form-group mb-20">
+                <label for="name" class="quick-form-label">
+                  <i class="fas fa-user"></i> Account Number</label>
+                <input formControlName="account" type="text" id="accountNo" class="quick-form" placeholder="Account Number" required autofocus
+                  autocomplete="off">
+                <small class="error text-danger" *ngIf="formLogin.controls['account'].hasError('required') && formLogin.controls['account'].touched">
+                  Please enter account number
+                </small>
+                <small class="error text-danger" *ngIf="formLogin.controls['account'].hasError('accountValid') && formLogin.controls['account'].touched">
+                  Please enter correct Account Number
+                </small>
+              </div>
+            
+              <div class="form-group mb-10">
+                <label for="password" class="quick-form-label">
+                  <i class="fas fa-lock"></i> Password</label>
+                <input type="password" id="password" formControlName="password" class="quick-form" placeholder="Password" required autocomplete="off">
+                <small class="error text-danger" *ngIf="formLogin.controls['password'].hasError('required') && formLogin.controls['password'].touched">
+                  Please enter Password
+                </small>
+              </div>
+            
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-12 text-right pl-0">
+                    <a class="text-small-14 text-dark-gray" href="#">Forgot password?</a>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="text-center">
+                <button class="btn btn-primary width-60 text-transform" type="submit">
+                  <i class="fas fa-sign-in-alt"></i> Sign in</button>
+                <span class="text-danger" *ngIf="invalidUsernamePassword">{{invalidUsernamePassword}}</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+<!--MOBILE APP SECTION-->
+<ul class="mob-serviceList">
+  <li>
+    <div class="card-service border-light">
+      <img src="assets/img/premium.png" alt="">
+      <p>Premium banking</p>
+    </div>
+  </li>
+  <li>
+    <div class="card-service border-light">
+      <img src="assets/img/corporate.png" alt="">
+      <p>Corporate banking</p>
+    </div>
+  </li>
+  <li>
+    <div class="card-service border-light">
+      <img src="assets/img/investment.png" alt="">
+      <p>Investment Services</p>
+    </div>
+  </li>
+  <li>
+    <div class="card-service border-light">
+      <img src="assets/img/crypto.png" alt="">
+      <p>Crypto Investment</p>
+    </div>
+  </li>
+</ul>
+<!--Services section-->
+<section class="services bg-light-blue tab-hidden">
+  <div class="container">
+    <div class="row padding-60px-tb padding-five box-Shadow-high pos-relative z-index-1 bg-white mt--80 border-radius-3">
+      <div class="col-sm-3">
+        <div class="bg-light-blue  overflow-hidden box-shadow">
+          <div class="icon-wrapper">
+            <img src="assets/img/premium.png" alt="">
+          </div>
+          <div class="service-content">
+            <h5>Premium banking</h5>
+            <p>Need to be sure there isn't anything embarrassing</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="bg-light-blue overflow-hidden box-shadow">
+          <div class="icon-wrapper">
+            <img src="assets/img/corporate.png" alt="">
+          </div>
+          <div class="service-content">
+            <h5>Corporate banking </h5>
+            <p>Need to be sure there isn't anything embarrassing</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="bg-light-blue overflow-hidden box-shadow">
+          <div class="icon-wrapper">
+            <img src="assets/img/investment.png" alt="">
+          </div>
+          <div class="service-content">
+            <h5>Investment Services </h5>
+            <p>Need to be sure there isn't anything embarrassing</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="bg-light-blue  overflow-hidden box-shadow">
+          <div class="icon-wrapper">
+            <img src="assets/img/crypto.png" alt="">
+          </div>
+          <div class="service-content">
+            <h5> Crypto Investment </h5>
+            <p>Need to be sure there isn't anything embarrassing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--benifit section-->
+<section class="benifit bg-light-blue padding-80px-tb tab-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>As a client, you can benefit from:</h1>
+      </div>
+    </div>
+    <div class="row padding-top-70px">
+      <div class="col-sm-7">
+        <img class="img-fluid blockchain-animation" src="assets/img/blockchain.png" alt="blockchain">
+      </div>
+      <div class="col-sm-5">
+        <ul class="default-reset normal-list list-20 list-size-18">
+          <li>We make the trades for you in adherence with best execution principles</li>
+          <li>Convenient (offline) storage of blockchain assets within our Bank</li>
+          <li>Access to blockchain asset management specialists of Falcon Private Bank</li>
+          <li>We make the trades for you in adherence with best execution principles</li>
+          <li>Convenient (offline) storage of blockchain assets within our Bank</li>
+          <li>Access to blockchain asset management specialists of Falcon Private Bank</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!--info section-->
+<section class="basicInfo pos-relative z-index-1 padding-60px-tb tab-hidden">
+  <div class="light-overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p class="text-white mb-30">Get free consultations</p>
+        <h2 class="text-white mb-30">Discussion about Ether Transfter to another wallet
+          <br> by your private key </h2>
+        <button class="btn btn-icon-support pos-relative width-15 p-3 border-radius-30 bg-white mt-20 cursor-pointer">
+          <span class="value-conten">Know more</span>
+          <span class="value-icon">
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!--faq-->
+<section class="faq padding-80px-tb tab-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>Frequently Asked Questions</h1>
+      </div>
+    </div>
+    <div class="row mt-60">
+      <div class="container">
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <span class="ti-plus"></span> We invest in cryptocurrencies
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <span class="ti-plus"></span> Why we invest in cryptocurrencies
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <span class="ti-plus"></span> What are cryptocurrencies
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <span class="ti-plus"></span> Which ERC20 compatible wallets i can use ?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <span class="ti-plus"></span> Which cryptocurrencies does accept during main-sale phases ?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="bg-light-blue mobile-copyright pb-2 pt-2 text-small text-center">
+  <div class="col-sm-12">
+    <p class="mb-0">Copyright 2018 © Afrikash. All Rights Reserved.
+      <br> Powerd by
+      <a target="_blank" href="http://akeo.tech">Akeo</a>
+    </p>
+  </div>
+</div>

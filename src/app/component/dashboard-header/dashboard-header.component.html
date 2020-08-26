@@ -1,0 +1,82 @@
+<!--Main-header menu-->
+<header>
+  <div class="bg-white header-inner p-2">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="leftMenu" (click)="dashboardMenu()">
+          <i class="ti-align-right text-16 text-blue-gray cursor-pointer"></i>
+        </a>
+        <a class="center-Logo" class="navbar-brand" routerLink="dashboard">
+          <img class="logo" src="assets/img/logo.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="ti-align-left text-16 text-blue-gray mobile-hide"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="../policy">Crypto Transfer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="dashboard">Credit Card </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="dashboard">Wealth Managment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="dashboard">Demat </a>
+            </li>
+            <!-- <li class="nav-item"><a (click)="GoToLogin()" class="nav-link btn btn-primary text-white login-btn">Login</a></li> -->
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<!--child haeder-->
+<section class="child-header cover-background">
+  <div class="container">
+    <div class="row">
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="">
+            <ul class="navbar-nav navbar-nav-white dashboard-menu">
+              <li class="nav-item">
+                <a class="nav-link cursor-pointer" (click)="GotoLogin()">
+                  <i class="fas fa-power-off"></i> Sign out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="user-info-header padding-40px-tb box-shadow mob-box-shadow bank-user-dashboard cover-background mobile-hide">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 row m-0">
+        <div class="avtar-content">
+          <h3 class="text-light-blue mb-lg-1">Welcome {{userDetails?.firstName}}</h3>
+        </div>
+      </div>
+      <div class="col-sm-6 text-right mb-text-left">
+        <ul class="default-reset normal-list text-right text-small-14 wrap-list row float-right mb-float-left mb-width-100 account-info">
+          <!-- <li>Account Number : </li>
+          <li>100000{{userDetails?.fk_user_id}}</li>
+          <li>Account Type : </li>
+          <li>Saving Account</li> -->
+        </ul>
+        <div class="mobile-view account-del">
+          <!-- <p class="mb-1">Account Number : 100000{{userDetails?.fk_user_id}}</p>
+          <p class="mb-0">Account Type : Saving Account</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

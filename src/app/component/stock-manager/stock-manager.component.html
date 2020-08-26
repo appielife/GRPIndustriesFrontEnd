@@ -1,0 +1,62 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+    <div class="container">
+        <div class="row padding-three-bottom">
+            <div class="col-sm-3">
+                <app-sidebar></app-sidebar>
+            </div>
+
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+                    <div class="col-sm-8">
+                        <h4 class="text-light-blue mb-20">Add wood specificatoin</h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="">Specification Type </label>
+                                    <select [(ngModel)]=stock_uid class="form-control" id="stock_uid">
+                                        <option *ngFor="let items of specificationType" [value]="items.id">
+                                            {{items.value}}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="">Display Name</label>
+                                    <input [(ngModel)]="name" class="form-control" id="vehicleNo" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="">Value</label>
+                                    <input [(ngModel)]="value" class="form-control" id="vehicleNo" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="">Description</label>
+                                    <input [(ngModel)]="description" class="form-control" id="vehicleNo" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-left">
+                                <button (click)='onSubmit()' type="submit"
+                                    class="btn btn-primary mt-10 width-50">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

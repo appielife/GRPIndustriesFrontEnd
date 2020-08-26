@@ -1,0 +1,61 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+          <div class="row">
+            <div *ngIf='!userDetails?.public_address' class="col-sm-12">
+              <h3 class="mb-20  text-light-blue mb-20">Account Creation</h3>
+              <p class="mb-0">Fetching funds for your wallet. Do not close window or press back </p>
+              <button routerLink="../policy" class="btn btn-primary width-20 mt-3 text-white black-shadow">Creating wallet..</button>
+            </div>
+            <div *ngIf='userDetails?.public_address' class="col-sm-12">
+              <h3 class="mb-20 text-light-blue mb-20">Account Details</h3>
+              <table class="table theme-table">
+                <thead class="bg-blue">
+                  <tr>
+                    <th scope="col">Registered email id</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">CCY</th>
+                    <th scope="col">Available Balance</th>
+                    <th scope="col">Total Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf='userDetails'>
+                    <td data-label="Registered email id">{{userDetails.email}}</td>
+                    <td data-label="Description">Crypto</td>
+                    <td data-label="CCY">ETH</td>
+                    <td data-label="Available Balance">{{balance_avl}}
+                      <span class="padding-left-10px text-11 text-turquoise-green" style="display: block; font-style: italic;">
+                        <span *ngIf='!ethRate'>
+                          <i class="fa fa-spinner fa-spin" style="font-size:11px"></i>
+                        </span>{{ethRate_avlbl}} USD</span>
+                    </td>
+                    <td data-label="Total Balance">{{balance}}
+                      <span class="padding-left-10px text-11 text-turquoise-green" style="display: block; font-style: italic;">
+                        <span *ngIf='!ethRate'>
+                          <i class="fa fa-spinner fa-spin" style="font-size:11px"></i>
+                        </span>{{ethRate_total}} USD</span>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button routerLink="../fund" class="btn btn-primary width-20 mt-20">Send ETH</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
