@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -92,7 +91,6 @@ import { StockSummaryComponent } from './component/stock-summary/stock-summary.c
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    MDBBootstrapModule.forRoot()
   ],
   providers: [
     AuthGuard,
