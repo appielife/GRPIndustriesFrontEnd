@@ -1,0 +1,287 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+   <div class="container">
+      <div class="row padding-three-bottom">
+         <div class="col-sm-3">
+            <app-sidebar></app-sidebar>
+         </div>
+         <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
+               <div class="col-sm-12">
+                  <form [formGroup]="customerForm" novalidate (ngSubmit)="onSubmit(formLogin.value)" class="form-signin">
+                  <h4 class="text-light-blue mb-20">Add Customer</h4>
+                  <div class="row">
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Company Name *</label>
+                           <input id="company_name"  formControlName="company_name" required  class="form-control"/>
+                           <small class="error text-danger" *ngIf="customerForm.controls['company_name'].hasError('required') && customerForm.controls['company_name'].touched">
+                           Please enter Company Name
+                           </small>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">First Name *</label>
+                           <input id="first_name"  formControlName="first_name" required  class="form-control"/>
+                           <small class="error text-danger" *ngIf="customerForm.controls['first_name'].hasError('required') && customerForm.controls['first_name'].touched">
+                           Please enter First Name
+                           </small>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Last Name</label>
+                           <input id="last_name"  formControlName="last_name" required  class="form-control"/>
+                           <small class="error text-danger" *ngIf="customerForm.controls['last_name'].hasError('required') && customerForm.controls['last_name'].touched">
+                           Please enter Last Name
+                           </small>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-6">
+                        <div class="form-group">
+                           <label for="">PAN</label>
+                           <input id="pan"  formControlName="pan"   class="form-control"/>                          
+                           <small class="error text-danger" *ngIf="customerForm.controls['pan'].hasError('panValid') && customerForm.controls['pan'].touched">
+                           Invalid PAN
+                           </small>                           
+                        </div>
+                     </div>
+                     <div class="col-6">
+                        <div class="form-group">
+                           <label for="">GST</label>
+                           <input id="gst_tin"  formControlName="gst_tin"   class="form-control"/>                           
+                           <small class="error text-danger" *ngIf="customerForm.controls['gst_tin'].hasError('gstValid') && customerForm.controls['gst_tin'].touched">
+                           Invalid  GST
+                           </small>  
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-6">
+                        <div class="form-group">
+                           <label for="">Address Line1</label>
+                           <input id="address1"  formControlName="address1"   class="form-control"/>
+                        </div>
+                     </div>
+                     <div class="col-6">
+                        <div class="form-group">
+                           <label for="">Address Line2</label>
+                           <input id="address2"  formControlName="address2"   class="form-control"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">City</label>
+                           <input id="city"  formControlName="city"   class="form-control"/>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">State</label>
+                           <input id="state"  formControlName="state"   class="form-control"/>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Pin Code</label>
+                           <input id="pincode"  formControlName="pincode"   class="form-control"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Phone 1 *</label>
+                           <input id="phone1"  formControlName="phone1" required  class="form-control"/>
+                           <small class="error text-danger" *ngIf="customerForm.controls['phone1'].hasError('required') && customerForm.controls['phone1'].touched">
+                           Please enter Phone
+                           </small>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Phone 2</label>
+                           <input id="phone2"  formControlName="phone2"   class="form-control"/>
+                        </div>
+                     </div>
+                     <div class="col-4">
+                        <div class="form-group">
+                           <label for="">Email *</label>
+                           <input id="email"  formControlName="email" required  class="form-control"/>
+                           <small class="error text-danger" *ngIf="customerForm.controls['email'].hasError('required') && customerForm.controls['email'].touched">
+                           Please enter email
+                           </small>
+                           <small class="error text-danger" *ngIf="customerForm.controls['email'].hasError('emailValid') && customerForm.controls['email'].touched">
+                           Invalid Email
+                           </small>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-12">
+                        <button (click)='createCustomer(customerForm.value)' type="submit"
+                           class="btn btn-primary mt-10 width-50">Confirm</button>
+                     </div>
+                  </div>
+                  </form>
+               </div>
+            </div>
+            <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10 mt-10">
+               <div class="col-sm-12">
+                  <h4 class="text-light-blue mb-20">Customer Information </h4>
+                   <data-table
+                    id="my-table"
+                    [title]="Customers"
+                    [items]="customers"
+                    [itemCount]="customers?.length"
+                    expandableRow ="true"
+                    >
+                    <data-table-column
+                        property="company_name"
+                        header="Company Name"
+                        resizable ="true"
+                        sortable="true"
+                        >
+                        <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.company_name" class="form-control input-sm" />
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        visible= "false"
+                        property="first_name"
+                        header="First Name"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                        <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.first_name" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+
+                    <data-table-column
+                        property="last_name"
+                        header="Last Name"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.last_name" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="email"
+                        header="Email"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.email" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="pan"
+                        header="PAN"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.pan" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="gst_tin"
+                        header="GST"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.gst_tin" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="phone1"
+                        header="Phone1"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.phone1" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="phone2"
+                        header="Phone2"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.phone2" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="address1"
+                        header="Address Line 1"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.address1" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        property="address2"
+                        header="Address Line 2"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.address2" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>   
+                    <data-table-column
+                        property="city"
+                        header="City"
+                        resizable ="true"
+                        sortable="true"
+                        visible ="false"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.city" class="form-control input-sm"/>
+                    </ng-template>
+                    </data-table-column>    
+                    <data-table-column
+                        property="state"
+                        header="State"
+                        resizable ="true"
+                        sortable="true"
+                        visible ="false"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.state" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column> 
+                    <data-table-column
+                        header="Actions"
+                        resizable ="true"
+                        >
+                        <ng-template #dataTableCell let-item="item">
+                            <button type ="submit" (click)="updateCustomer(item)" style="padding:0px"class="btn btn-primary">Update</button>
+                        </ng-template>
+                    </data-table-column>   
+
+                                          
+              
+                </data-table>             
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

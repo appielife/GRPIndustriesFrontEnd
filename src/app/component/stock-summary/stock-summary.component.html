@@ -8,20 +8,12 @@
       </div>
       <div class="col-sm-12 col-md-9 col-lg-9">
          <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10">
-            <div class="col-sm-8">
-               <h4 class="text-light-blue mb-20">Result </h4>
-               <div class="row">
-                  <div class="col-4">
-                     <span class="">Total CC</span>
-                  </div>
-                  <div class="col-8">
-                     <span class=""> {{totalcc}}</span>
-                  </div>
-               </div>
+            <div class="col-sm-12">
+               <h4 class="text-light-blue mb-20">Stock Summary </h4>           
                <table class="table theme-table sort-table mt-20">
                   <thead class="bg-blue">
-                     <tr>
-                        <th>ID</th>
+                     <tr> 
+                        <th>Sr No</th>
                         <th>Thickness</th>
                         <th>Length</th>
                         <th>Width</th>
@@ -34,14 +26,14 @@
                      <tr *ngIf="dataArray.length == 0">
                         No Records Found
                      </tr>
-                       <tr *ngFor="let data of dataArray">
-                            <td>{{data.id}}</td>
+                       <tr *ngFor="let data of dataArray; let id = index">
+                            <td><span class="text-light-blue mb-20">{{id+1}}</span></td>
                             <td>{{data.thicknessName}}</td>
                             <td>{{data.lengthName}}</td>
                             <td>{{data.widthName}}</td>
-                            <td><input type="text" id="{{data.id}}" class="quick-form"  [value] ="data.quantity" > </td>
-                            <td><input type="text" id="{{data.id}}" class="quick-form"  [value] ="data.price" > </td>
-                            <td>{{data.price}}</td>   
+                            <td><input type="text"  class="quick-form"  [(ngModel)]="data.quantity"  > </td>
+                            <td><input type="text"  class="quick-form" [(ngModel)]="data.price" > </td>
+                            <td><button type="button"  color="danger" rounded="true" size="sm" class="my-0" (click)="updateRecord(id)">Update</button></td>   
                        </tr>
           
                      

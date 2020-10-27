@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ConstService } from "./const.services";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { BehaviorSubject } from "rxjs";
 @Injectable()
 export class TransferService {
   private messageSource = new BehaviorSubject<any>(null);
@@ -37,10 +37,12 @@ export class TransferService {
     );
   }
 
-
-
-
-
+  updateStockInfo(obj) {
+    return this.http.put(
+      this.constService.API_URL + "transaction/updateStockInfo",
+      obj
+    );
+  }
 
   sendTransactionDetail(transactionObj) {
     return this.http.post(
@@ -66,4 +68,26 @@ export class TransferService {
   resendOtp() {
     return this.http.get(this.constService.API_URL + "transaction/resendotp");
   }
+
+  getCustomers() {
+    return this.http.get(this.constService.API_URL + "transaction/getCustomers");
+  }
+  createCustomer(customerObj:any) {
+    return this.http.post(this.constService.API_URL + "transaction/createCustomer",customerObj);
+  }
+  updateCustomer(customerObj:any) {
+    return this.http.put(this.constService.API_URL + "transaction/updateCustomer",customerObj);
+  }
+
+  
+  getBills() {
+    return this.http.get(this.constService.API_URL + "transaction/getBills");
+  }
+
+
+  getInvoice(data){
+    return this.http.post(this.constService.API_URL + "transaction/getInvoice",data);
+  }
+
+  
 }

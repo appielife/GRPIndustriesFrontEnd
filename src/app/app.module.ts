@@ -52,6 +52,11 @@ import { NewLoadingComponent } from "./component/new-loading/new-loading.compone
 import { StockCalculatorComponent } from './component/stock-calculator/stock-calculator.component';
 import { StockManagerComponent } from './component/stock-manager/stock-manager.component';
 import { StockSummaryComponent } from './component/stock-summary/stock-summary.component';
+import { CustomersComponent } from './component/customers/customers.component';
+import { DataTableModule } from 'angular5-data-table';
+import { BillsComponent } from './component/bills/bills.component';
+import { InvoiceComponent } from './component/invoice/invoice.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +81,9 @@ import { StockSummaryComponent } from './component/stock-summary/stock-summary.c
     StockCalculatorComponent,
     StockManagerComponent,
     StockSummaryComponent,
+    CustomersComponent,
+    BillsComponent,
+    InvoiceComponent,
 
   ],
   imports: [
@@ -91,6 +99,7 @@ import { StockSummaryComponent } from './component/stock-summary/stock-summary.c
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    DataTableModule.forRoot()
   ],
   providers: [
     AuthGuard,

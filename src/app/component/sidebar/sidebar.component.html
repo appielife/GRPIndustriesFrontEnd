@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-12 row m-0">
                     <div class="avtar-content">
-                        <h3 class="text-light-blue mb-lg-1">Welcome {{userDetails?.firstName}}</h3>
+                        <h3 class="text-light-blue mb-lg-1">Welcome {{uname}}</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-text-left">
@@ -18,14 +18,21 @@
         </div>
     </section>
     <ul class="default-reset normal-list list-20 p-4 mobile-SidePanel">
-        <li class="mt-0">
-            <a routerLinkActive="active-link" routerLink="../dashboard">Account Details</a>
+    
+        <li>
+            <a routerLink="../customers" routerLinkActive="active-link">Client</a>
+        </li>
+         <li>
+            <a routerLink="../calculator" routerLinkActive="active-link">Order</a>
         </li>
         <li>
-            <a routerLink="../fund" routerLinkActive="active-link">Send Ether (ETH)</a>
+            <a routerLink="../stock" routerLinkActive="active-link">Add wood type</a>
         </li>
-        <li>
-            <a routerLink="../summary" routerLinkActive="active-link">Transaction History</a>
+         <li>
+            <a routerLink="../stock-summary" routerLinkActive="active-link">Stock-Summary</a>
+        </li>
+           <li>
+            <a routerLink="../bills" routerLinkActive="active-link">Bills</a>
         </li>
         <li>
             <a class="cursor-pointer" (click)=GotoLogin()>Sign out</a>

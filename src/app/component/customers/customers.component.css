@@ -1,0 +1,14 @@
+:host ::ng-deep .table thead {
+    color: #fff;
+    font-weight: 300;
+    border: none !important;
+    background: #2E465B !important;
+}
+
+:host ::ng-deep .table {
+    font-size: 0.8rem;
+}
+
+:host ::ng-deep .input {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,99 @@
+<app-dashboard-header></app-dashboard-header>
+<!--main dashboard content-->
+<section class="mani-dashboard-content padding-70px-tb mob-paddingTop-20">
+   <div class="container">
+      <div class="row padding-three-bottom">
+         <div class="col-sm-3">
+            <app-sidebar></app-sidebar>
+         </div>
+         <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="dasboard-main-content-wrapper border-normal p-4 mb-padding-10 mt-10">
+               <div class="col-sm-12">
+                  <h4 class="text-light-blue mb-20">Bill Information </h4>
+                   <data-table
+                    id="my-table"
+                    [title]="Customers"
+                    [items]="bills"
+                    [itemCount]="bills?.length"
+                    expandableRow ="true"
+                    >
+                      <data-table-column
+                        property="id"
+                        header="Bill No."
+                        resizable ="true"
+                        sortable="true"
+                        >
+                        <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.id" class="form-control input-sm" />
+                        </ng-template>
+                    </data-table-column>
+
+                    
+                    <data-table-column
+                        visible= "false"
+                        property="date"
+                        header="Dated"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                        <ng-template #dataTableCell let-item="item">
+                            <input type="text" [(ngModel)]="item.date" class="form-control input-sm"/>
+                        </ng-template>
+                    </data-table-column>
+
+
+                    <data-table-column
+                        property="company_name"
+                        header="Company Name"
+                        resizable ="true"
+                        sortable="true"
+                        >
+                         <ng-template #dataTableCell let-item="item">
+                            {{item.company_name}}
+                        </ng-template>
+                    </data-table-column>
+
+                    <data-table-column
+                        property="quantity"
+                        header="Quantity (CC)"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                     {{(item.quantity).toFixed(2)}}
+                    </ng-template>
+                    </data-table-column>                    
+                    
+                    <data-table-column
+                        property="total_amount"
+                        header="Bill Amount"
+                        resizable ="true"
+                        sortable="true"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                        {{(item.total_amount+item.cgst+item.igst+item.round_off+item.sgst).toFixed(2)}}
+                    </ng-template>
+                    </data-table-column>
+                   
+                    <data-table-column
+                        header="Actions"
+                        resizable ="true"
+                        >
+                        <ng-template #dataTableCell let-item="item">
+                        <div  style="flex-direction:row; display:flex">
+                            <button type ="submit" (click)="updateCustomer(item)" style="padding:0px"class="btn btn-primary">Update</button>
+                            <button type ="submit" (click)="viewBill(item)" style="padding:0px"class="btn btn-primary">View</button>
+                        </div>
+
+                        </ng-template>
+                    </data-table-column>   
+
+                                          
+              
+                </data-table>             
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

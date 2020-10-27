@@ -19,11 +19,9 @@ export class DashboardHeaderComponent implements OnInit {
     this.router.navigate([""]);
   }
   ngOnInit() {
-    this.userService.getUserDetail().subscribe(result => {
-      if (result["success"]) {
-        this.userDetails = result["success"];
-      }
-    });
+    const authData = window.sessionStorage.getItem("auth_data");
+    this.userDetails= JSON.parse(authData);
+
   }
   dashboardMenu() {
     SiteJS.dashboardmenu();
